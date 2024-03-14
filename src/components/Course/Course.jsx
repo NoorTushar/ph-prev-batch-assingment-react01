@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { FaDollarSign, FaBookOpen } from "react-icons/fa";
 
-const Course = ({ eachCourse }) => {
+const Course = ({ eachCourse, handleSelectCourse }) => {
    const { name, price, credit, description, photo } = eachCourse;
 
    return (
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-xl border border-purple-300">
          <figure className="px-10 pt-10">
             <img src={photo} alt={name} className="rounded-xl" />
          </figure>
@@ -19,18 +19,21 @@ const Course = ({ eachCourse }) => {
                      <FaDollarSign />
                   </span>
                   <span>Price : {price}</span>
-                  <span></span>
                </div>
                <div className="flex items-center gap-2">
                   <span>
                      <FaBookOpen />
                   </span>
                   <span>Credit : {credit}</span>
-                  <span></span>
                </div>
             </div>
             <div className="card-actions w-full">
-               <button className="btn btn-primary w-full">Buy Now</button>
+               <button
+                  className="btn btn-primary w-full"
+                  onClick={() => handleSelectCourse(eachCourse)}
+               >
+                  Select
+               </button>
             </div>
          </div>
       </div>
@@ -39,6 +42,7 @@ const Course = ({ eachCourse }) => {
 
 Course.propTypes = {
    eachCourse: PropTypes.object.isRequired,
+   handleSelectCourse: PropTypes.func.isRequired,
 };
 
 export default Course;
