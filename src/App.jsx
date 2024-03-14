@@ -12,9 +12,17 @@ function App() {
          .then((data) => setCourses(data));
    }, []);
 
-   const handleSelectCourse = (course) => {
-      console.log(`selecting course - `, course);
+   const handleRemoveCourse = (id) => {
+      console.log(`removing course`, id);
+      const newCartCourses = cartCourses.filter(
+         (eachCartItem) => eachCartItem.id !== id
+      );
 
+      setCartCourses(newCartCourses);
+      console.log(cartCourses);
+   };
+
+   const handleSelectCourse = (course) => {
       const doExist = cartCourses.find((item) => {
          return item.id == course.id;
       });
@@ -36,7 +44,10 @@ function App() {
                handleSelectCourse={handleSelectCourse}
             ></Courses>
             {/* right */}
-            <Cart cartCourses={cartCourses}></Cart>
+            <Cart
+               handleRemoveCourse={handleRemoveCourse}
+               cartCourses={cartCourses}
+            ></Cart>
          </main>
       </>
    );

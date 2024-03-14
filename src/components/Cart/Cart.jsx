@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Cart = ({ cartCourses }) => {
+const Cart = ({ cartCourses, handleRemoveCourse }) => {
    console.log(cartCourses);
 
    return (
@@ -19,7 +19,12 @@ const Cart = ({ cartCourses }) => {
                         </span>{" "}
                         {eachCartItem.name}
                      </h3>
-                     <button className="btn btn-primary  btn-sm">Remove</button>
+                     <button
+                        onClick={() => handleRemoveCourse(eachCartItem.id)}
+                        className="btn btn-primary  btn-sm"
+                     >
+                        Remove
+                     </button>
                   </div>
                );
             })}
@@ -32,6 +37,7 @@ const Cart = ({ cartCourses }) => {
 
 Cart.propTypes = {
    cartCourses: PropTypes.array.isRequired,
+   handleRemoveCourse: PropTypes.func.isRequired,
 };
 
 export default Cart;
