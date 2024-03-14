@@ -9,11 +9,21 @@ const Cart = ({ cartCourses }) => {
             <h3 className="font-semibold">Credit Hours Remaining: 7 hr</h3>
          </div>
 
-         {cartCourses.map((eachCartItem) => {
-            return (
-               <div key={eachCartItem.id}>Course Name: {eachCartItem.name}</div>
-            );
-         })}
+         <div>
+            {cartCourses.map((eachCartItem) => {
+               return (
+                  <div key={eachCartItem.id} className="mb-4 space-y-4">
+                     <h3 className="text-xl">
+                        <span className="text-purple-500 font-medium">
+                           Course Name:
+                        </span>{" "}
+                        {eachCartItem.name}
+                     </h3>
+                     <button className="btn btn-primary  btn-sm">Remove</button>
+                  </div>
+               );
+            })}
+         </div>
          <div>Total Credit Hour: 13</div>
          <div>Total Price: ${}</div>
       </div>
